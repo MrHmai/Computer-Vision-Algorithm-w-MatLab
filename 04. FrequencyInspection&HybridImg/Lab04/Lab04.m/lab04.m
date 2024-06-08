@@ -1,0 +1,39 @@
+%% Task 1: Split Frequency Images ratio: 0.1
+img = im2double(imread('lena.jpg')); 
+[low_pass_img, high_pass_img] = separate_frequency(img, 0.1);
+figure; imshow(low_pass_img);
+imwrite(low_pass_img, 'lena_low_0.1.jpg');
+% Display and save high-pass image
+figure; imshow(high_pass_img + 0.5);
+imwrite(high_pass_img, 'lena_high_0.1.jpg');
+
+% Task 2:Split Frequency Images ratio: 0.2
+[low_pass_img1, high_pass_img1] = separate_frequency(img, 0.2);
+
+% Display and save low-pass image
+figure; imshow(low_pass_img1);
+imwrite(low_pass_img1, 'lena_low_0.2.jpg');
+
+% Display and save high-pass image
+figure; imshow(high_pass_img1 + 0.5);
+imwrite(high_pass_img1, 'lena_high_0.2.jpg');
+
+%% Task 3: Hybrid Images 
+img1 = im2double(imread('marilyn.jpg')); 
+img2 = im2double(imread('einstein.jpg')); 
+
+% Task 4: Merge low-frequency marilyn and High-frequency Einstein
+img_hybrid1 = hybrid_image(img1, img2, 0.2);
+figure, imshow(img_hybrid1);
+imwrite(img_hybrid1, 'hybrid_1.jpg');
+
+% display image
+figure, imshow(img_hybrid1);
+
+% Merge High-frequency marilyn and Low-frequency Einstein
+img_hybrid2 = hybrid_image(img2, img1, 0.2); 
+figure, imshow(img_hybrid2); 
+imwrite(img_hybrid2, 'hybrid_2.jpg');
+
+% display image
+figure, imshow(img_hybrid2);
